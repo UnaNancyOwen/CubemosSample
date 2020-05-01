@@ -23,6 +23,11 @@ If you want to use Skeleton Tracking in 3D, You need these sensors and libraries
 * RealSense and RealSense SDK v2.x
 * Azure Kinect and Azure Kinect Sensor SDK v1.4.0 (or later)
 
+Fix CMake Files of Skeleton Tracking SDK by Cubemos
+---------------------------------------------------
+In current version, CMake files for Skeleton Tracking SDK by Cubemos has a few mistakes.  
+Please fix CMake files according with [this document](https://gist.github.com/UnaNancyOwen/6e07e2d6d459b2cadfa7a17d867771ad#file-fix-md).  
+
 License
 -------
 Copyright &copy; 2020 Tsukasa SUGIURA  
