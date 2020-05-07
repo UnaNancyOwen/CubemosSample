@@ -16,14 +16,12 @@ add_executable( realsense util.hpp util.cpp realsense.hpp realsense.cpp main.cpp
 set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "realsense" )
 
 # Find Package
-find_package( CUBEMOS_CORE REQUIRED )
 find_package( CUBEMOS_SKELETON_TRACKING REQUIRED )
 find_package( realsense2 REQUIRED )
 find_package( OpenCV REQUIRED )
 
-if( CUBEMOS_CORE_FOUND AND CUBEMOS_SKELETON_TRACKING_FOUND AND realsense2_FOUND AND OpenCV_FOUND )
-  target_link_libraries( realsense ${CUBEMOS_CORE_LIBS} )
-  target_link_libraries( realsense ${CUBEMOS_SKELETON_TRACKING_LIBS} )
+if( CUBEMOS_SKELETON_TRACKING_FOUND AND realsense2_FOUND AND OpenCV_FOUND )
+  target_link_libraries( realsense cubemos_skeleton_tracking )
   target_link_libraries( realsense realsense2::realsense2 )
   target_link_libraries( realsense ${OpenCV_LIBS} )
 endif()

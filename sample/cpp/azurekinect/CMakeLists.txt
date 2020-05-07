@@ -16,14 +16,12 @@ add_executable( azurekinect util.hpp util.cpp kinect.hpp kinect.cpp main.cpp )
 set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "azurekinect" )
 
 # Find Package
-find_package( CUBEMOS_CORE REQUIRED )
 find_package( CUBEMOS_SKELETON_TRACKING REQUIRED )
 find_package( k4a REQUIRED )
 find_package( OpenCV REQUIRED )
 
-if( CUBEMOS_CORE_FOUND AND CUBEMOS_SKELETON_TRACKING_FOUND AND k4a_FOUND AND OpenCV_FOUND )
-  target_link_libraries( azurekinect ${CUBEMOS_CORE_LIBS} )
-  target_link_libraries( azurekinect ${CUBEMOS_SKELETON_TRACKING_LIBS} )
+if( CUBEMOS_SKELETON_TRACKING_FOUND AND k4a_FOUND AND OpenCV_FOUND )
+  target_link_libraries( azurekinect cubemos_skeleton_tracking )
   target_link_libraries( azurekinect k4a::k4a )
   target_link_libraries( azurekinect ${OpenCV_LIBS} )
 endif()

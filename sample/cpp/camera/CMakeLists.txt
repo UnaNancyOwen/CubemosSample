@@ -16,12 +16,10 @@ add_executable( camera util.hpp util.cpp main.cpp )
 set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "camera" )
 
 # Find Package
-find_package( CUBEMOS_CORE REQUIRED )
 find_package( CUBEMOS_SKELETON_TRACKING REQUIRED )
 find_package( OpenCV REQUIRED )
 
-if( CUBEMOS_CORE_FOUND AND CUBEMOS_SKELETON_TRACKING_FOUND AND OpenCV_FOUND )
-  target_link_libraries( camera ${CUBEMOS_CORE_LIBS} )
-  target_link_libraries( camera ${CUBEMOS_SKELETON_TRACKING_LIBS} )
+if( CUBEMOS_SKELETON_TRACKING_FOUND AND OpenCV_FOUND )
+  target_link_libraries( camera cubemos_skeleton_tracking )
   target_link_libraries( camera ${OpenCV_LIBS} )
 endif()
